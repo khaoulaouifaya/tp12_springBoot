@@ -22,12 +22,21 @@ public class serviceClient implements IclientService {
 		return dao.save(c);
 	}
 
+//	@Transactional
+//	public void updateClient(Client c) {
+//		// TODO Auto-generated method stub
+//		c.setNom(c.getNom());
+//		c.setPrenom(c.getPrenom());
+//		dao.save(c);
+//	}
+	
 	@Transactional
 	public void updateClient(Client c) {
 		// TODO Auto-generated method stub
-		c.setNom(c.getNom());
-		c.setPrenom(c.getPrenom());
-		dao.save(c);
+		Client oldClient=dao.findById(c.getId()).get();
+		oldClient.setNom(c.getNom());
+		oldClient.setPrenom(c.getPrenom());
+		dao.save(oldClient);
 	}
 
 	@Transactional

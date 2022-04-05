@@ -16,7 +16,7 @@ import springBoot.tp12.models.Client;
 import springBoot.tp12.services.IclientService;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/students")
 public class clientController{
 	
 	@Autowired
@@ -27,12 +27,12 @@ public class clientController{
 		// TODO Auto-generated method stub	
 		return service.saveClient(c);
 	}
+	
 
-	@PutMapping("/update")
+	@PutMapping("/updateClientForDb")
 	public void updateClient(@RequestBody Client c) {
 		// TODO Auto-generated method stub
-		service.updateClient(c);
-		
+		service.updateClient(c);	
 	}
 
 	@DeleteMapping("/{id}")
@@ -41,7 +41,7 @@ public class clientController{
 		service.deleteClient(idc);
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public Client getOne(@PathVariable("id") long idc) {
 		// TODO Auto-generated method stub
 		
